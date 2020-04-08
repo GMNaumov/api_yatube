@@ -6,11 +6,14 @@ class PostSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author')
 
     class Meta:
-        fileds = ('id', 'text', 'author', 'image', 'pub_date')
+        fields = ('id', 'text', 'author', 'image', 'pub_date')
         model = Post
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author')
+
     class Meta:
-        fileds = ('id', 'author', 'post', 'text', 'created')
+        fields = '__all__'
+        #fields = ('id', 'author', 'post', 'text', 'created')
         model = Comment
